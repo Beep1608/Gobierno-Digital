@@ -69,7 +69,7 @@ class UsuariosController extends Controller
         
         try {
             if (! $token = JWTAuth::attempt($arrayToken)) {
-                return response()->json(['error' => 'Invalid credentials'], 401);
+                return response()->json(['error' => 'No tienes las credenciales'], 401);
             }
 
             // Get the authenticated user.
@@ -104,7 +104,7 @@ class UsuariosController extends Controller
     {
       Auth::logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Logeado exitosamente']);
     }
 
     /**
@@ -146,7 +146,7 @@ class UsuariosController extends Controller
             return response()->json(['usuarios' => json_encode($users)]);
         }else{
 
-            return response()->json(['error' => 'Invalid credentials'], 401);
+            return response()->json(['error' => 'No tienes las credenciales'], 401);
         }
     }
 
@@ -292,7 +292,7 @@ class UsuariosController extends Controller
                 return response()->json(["response" => 'usuario eliminado con exito']);
             }   
         
-            return response()->json(["error" => 'no se pudo eliminar al usuario']);
+            return response()->json(["error" => 'No se pudo eliminar al usuario']);
         }else{
             return response()->json(['error' => 'No tienes las credenciales', 401]);
         }

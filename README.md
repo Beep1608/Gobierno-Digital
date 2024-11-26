@@ -35,4 +35,8 @@
  ![alt text](store-example.png)
 
  Ejemplo editar un usario ya existente: 
- 
+ ![alt text](update-example.png)
+
+ ## Mejoras
+ - Podría mejorarse los factories que existen, debido a la falta de desconocimineto se quedaron así.
+ - La función login() en UsuariosController podría reducirse, sin embargo debido a la falta de experiencia quedó de esa manera. 
