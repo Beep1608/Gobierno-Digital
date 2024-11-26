@@ -251,24 +251,18 @@ class UsuariosController extends Controller
             try {
         
                 DB::beginTransaction();
-                    $rol = Rol::where('name', $request->rol)->firstOrFail();
-                    $newUser = User::where('email', $id)->first();
+                $rol = Rol::where('name', $request->rol)->firstOrFail();
+                $newUser = User::where('email', $id)->first();
 
-                   
-                    RolUsuario::where('user_id', $newUser->email)
-                        ->update(['user_id' => $request->email]);
-
-                 
-                    $newUser->name = $request->name;
-                    $newUser->email = $request->email;
-                    $newUser->password = bcrypt($request->password);
-                    $newUser->save();
-
-                    
-                    $newRolUsuario = RolUsuario::updateOrCreate([
-                        'user_id' => $request->email,
-                        'role_id' => $rol->id
-                    ]);
+                $newUser->name = $request->name;
+                $newUser->email = $request->email;
+                $newUser->password = bcrypt($request->password);
+                $newUser->save();
+            
+                $newRolUsuario = RolUsuario::updateOrCreate([
+                    'user_id' => $request->email,
+                    'role_id' => $rol->id
+                ]);
                 
                 DB::commit();
         
